@@ -1,5 +1,5 @@
 name: set_state_async
-description: "A Flutter mixin for avoiding State.setState during build issue and improving performance."
+description: "A mixin for avoiding State.setState during build or locking issue and improving performance."
 version: 0.1.1
 repository: "https://github.com/xxoo/set_state_async"
 issue_tracker: "https://github.com/xxoo/set_state_async/issues"

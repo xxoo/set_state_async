@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// This mixin is for avoiding [setState] during build issue and improving performance.
+/// This mixin is for avoiding [setState] during build or locking issue and improving performance.
 mixin SetStateAsync<T extends StatefulWidget> on State<T> {
   final _fns = <VoidCallback>[];
   Future<void>? _future;

@@ -1,3 +1,6 @@
+## 0.1.2
+* improve documentation
+
 ## 0.1.1
 * fix link in README.md
 
