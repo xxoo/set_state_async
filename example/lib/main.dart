@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inview_notifier_list/inview_notifier_list.dart';
-import 'package:set_state_async/index.dart';
+import 'package:set_state_async/set_state_async.dart';
 
 void main() => runApp(const MyApp());
 
