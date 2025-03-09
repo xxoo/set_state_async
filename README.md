@@ -12,4 +12,4 @@ Run `flutter pub add set_state_async` to add this package to your project.
 
 Just add this mixin to your `State` class and call `setStateAsync` instead of `setState`. An optional callback can be passed if you need to perform changes just before rebuilding the widget.
 
-For more information, please check [example](https://pub.dev/xxoo/set_state_async/example) or [API reference](https://pub.dev/documentation/set_state_async/latest/index/SetStateAsync/setStateAsync.html).
+For more information, please check [example](https://pub.dev/xxoo/set_state_async/example) or [API reference](https://pub.dev/documentation/set_state_async/latest/set_state_async/SetStateAsync/setStateAsync.html).
