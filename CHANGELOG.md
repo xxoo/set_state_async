@@ -1,3 +1,6 @@
+## 0.1.4
+* change topics in pubspec.yaml
+
 ## 0.1.3
 * improve documentation
 
