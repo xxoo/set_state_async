@@ -7,7 +7,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  inview_notifier_list: any
   set_state_async:
     path: ../
 

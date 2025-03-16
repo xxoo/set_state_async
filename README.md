@@ -2,7 +2,7 @@
 
 `SetStateAsync` is a mixin that defers multiple `setState` calls into one within the same event loop.
 
-This approach helps reduce overhead when calling `setState` multiple times in quick succession, preventing ***setState while [building](https://www.google.com/search?q=setState()+or+markNeedsBuild()+called+during+build) or [locked](https://www.google.com/search?q=setState()+or+markNeedsBuild()+called+when+widget+tree+was+locked)*** issue and improving performance.
+This approach helps reduce overhead when calling `setState` multiple times in quick succession, preventing "***setState while [building](https://www.google.com/search?q=setState()+or+markNeedsBuild()+called+during+build) or [locked](https://www.google.com/search?q=setState()+or+markNeedsBuild()+called+when+widget+tree+was+locked)***" issue and improving performance.
 
 ## Installation
 
