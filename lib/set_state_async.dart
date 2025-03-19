@@ -5,21 +5,6 @@ mixin SetStateAsync<T extends StatefulWidget> on State<T> {
   final _fns = <VoidCallback>[];
   Future<void>? _future;
 
-  void _runFns(int i) {
-    try {
-      while (i < _fns.length) {
-        _fns[i++]();
-      }
-    } finally {
-      if (i == _fns.length) {
-        _fns.clear();
-        _future = null;
-      } else {
-        _runFns(i);
-      }
-    }
-  }
-
   /// Defers multiple [setState] operations into one within the same event loop.
   /// All [fn]s will be called by the same [setState] operation if supplied.
   /// The returned [Future] will complete after the [setState] operation is done.
@@ -29,7 +14,17 @@ mixin SetStateAsync<T extends StatefulWidget> on State<T> {
     }
     return _future ??= Future.microtask(() {
       if (mounted) {
-        setState(() => _runFns(0));
+        setState(() {
+          for (var i = 0; i < _fns.length; i++) {
+            try {
+              _fns[i]();
+            } finally {
+              continue; // ignore: control_flow_in_finally
+            }
+          }
+          _fns.clear();
+          _future = null;
+        });
       }
     });
   }

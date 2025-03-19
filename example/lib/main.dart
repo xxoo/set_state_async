@@ -20,13 +20,13 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
     vsync: this,
   )..repeat();
 
-  void _update() {
+  void _statistic() {
     _frames++;
     final now = DateTime.now().millisecondsSinceEpoch;
-    _frameTimes.add(now);
     while (_frameTimes.isNotEmpty && now - _frameTimes.first > 1000) {
       _frameTimes.removeAt(0);
     }
+    _frameTimes.add(now);
   }
 
   @override
@@ -50,13 +50,13 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
               ),
               builder: (BuildContext context, Widget? child) {
                 // setState will cause error if called here.
-                // setState(_update);
+                // setState(_statistic);
 
-                // But you can use setStateAsync instead. _update will be called just before rendering.
-                setStateAsync(fn: _update);
+                // But you can use setStateAsync instead. _statistic will be called just before rendering.
+                setStateAsync(fn: _statistic);
 
                 // Or you can perform changes immediately and call setStateAsync without parameter.
-                // _update();
+                // _statistic();
                 // setStateAsync();
 
                 return Transform.rotate(
@@ -67,10 +67,10 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
             ),
           ),
           Positioned(
-            top: 10.0,
-            left: 10.0,
+            top: 20.0,
+            left: 20.0,
             child: Text(
-              'frames: $_frames\nfps: ${_frameTimes.length}\nangle: ${(_controller.value * 2).toStringAsFixed(2)}𝞹',
+              'frames: $_frames\nfps: ${_frameTimes.length}\nangle: ${(_controller.value * 360).round()}°',
               style: const TextStyle(
                 decoration: TextDecoration.none,
                 fontSize: 16.0,

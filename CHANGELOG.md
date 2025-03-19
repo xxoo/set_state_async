@@ -1,3 +1,6 @@
+## 0.1.6
+* eliminating recursive calls
+
 ## 0.1.5
 * update example
 
