@@ -1,6 +1,6 @@
 name: set_state_async
 description: 'A mixin to avoid "setState while building or locked" issue and improve performance.'
-version: 0.1.6
+version: 0.1.7
 repository: 'https://github.com/xxoo/set_state_async'
 issue_tracker: 'https://github.com/xxoo/set_state_async/issues'
 topics:

@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'dart:developer';
 import 'package:flutter/widgets.dart';
 
 /// This mixin is to avoid "[setState] while building or locked" issue and improve performance.
@@ -12,20 +14,40 @@ mixin SetStateAsync<T extends StatefulWidget> on State<T> {
     if (fn != null) {
       _fns.add(fn);
     }
-    return _future ??= Future.microtask(() {
-      if (mounted) {
-        setState(() {
-          for (var i = 0; i < _fns.length; i++) {
-            try {
-              _fns[i]();
-            } finally {
-              continue; // ignore: control_flow_in_finally
+    if (_future == null) {
+      final completer = Completer<void>();
+      _future = completer.future;
+      // Future.microtask() is not suitable here cause it has own error handling logic.
+      scheduleMicrotask(() {
+        if (mounted) {
+          setState(() {
+            var errs = 0;
+            for (var i = 0; i < _fns.length; i++) {
+              var err = true;
+              try {
+                _fns[i]();
+                err = false;
+              } finally {
+                if (err) {
+                  errs++;
+                  continue; // ignore: control_flow_in_finally
+                }
+              }
             }
-          }
-          _fns.clear();
-          _future = null;
-        });
-      }
-    });
+            if (errs > 0) {
+              log(
+                '$errs callback(s) failed. You may find them out with a debugger.',
+                name: 'setStateAsync',
+                level: 900, // WARNING
+              );
+            }
+          });
+        }
+        _fns.clear();
+        _future = null;
+        completer.complete();
+      });
+    }
+    return _future!;
   }
 }

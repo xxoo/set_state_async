@@ -53,11 +53,11 @@ class _AnimatedBuilderExampleState extends State<AnimatedBuilderExample>
                 // setState(_statistic);
 
                 // But you can use setStateAsync instead. _statistic will be called just before rendering.
-                setStateAsync(fn: _statistic);
+                // setStateAsync(fn: _statistic);
 
                 // Or you can perform changes immediately and call setStateAsync without parameter.
-                // _statistic();
-                // setStateAsync();
+                _statistic();
+                setStateAsync();
 
                 return Transform.rotate(
                   angle: _controller.value * 2 * pi,

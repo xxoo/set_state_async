@@ -1,5 +1,9 @@
+## 0.1.7
+* unhandled exceptions in callback are now caught by debugger
+* show warning when callback fails
+
 ## 0.1.6
-* eliminating recursive calls
+* eliminate recursive calls
 
 ## 0.1.5
 * update example
