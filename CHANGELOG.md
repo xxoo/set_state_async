@@ -1,3 +1,7 @@
+## 0.1.8
+* remove warning message
+* add return value
+
 ## 0.1.7
 * unhandled exceptions in callback are now caught by debugger
 * show warning when callback fails
