@@ -1,3 +1,6 @@
+## 1.0.0
+* stable release
+
 ## 0.1.8
 * remove warning message
 * add return value
