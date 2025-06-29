@@ -17,7 +17,7 @@ mixin SetStateAsync<T extends StatefulWidget> on State<T> {
   /// This improves performance by executing multiple state updates in one [setState] call.
   /// Returns a [Future] with status code: 0 if [State] is disapoed, 1 if completed successfully.
   /// When providing [fn], the status code could also be -1 if error occurs.
-  Future<int> setStateAsync({VoidCallback? fn}) {
+  Future<int> setStateAsync([VoidCallback? fn]) {
     if (_completer == null) {
       _completer = Completer();
       // Future.microtask() is not suitable here cause it has own error handling logic.

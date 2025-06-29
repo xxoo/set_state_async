@@ -1,3 +1,6 @@
+## 1.1.0
+* **breaking change**: `setStateAsync` now uses an optional positional parameter for callback instead of a named parameter.
+
 ## 1.0.0
 * stable release
 
